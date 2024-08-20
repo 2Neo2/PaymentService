@@ -1,0 +1,26 @@
+volumes:
+  postgres:
+  redis:
+
+services:
+  postgres:
+    image: postgres:latest
+    volumes:
+      - postgres:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_HOST=0.0.0.0
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=payment_service
+      - POSTGRES_USER=payment_service
+      - POSTGRES_PASSWORD=12345
+
+  redis:
+    image: redis:latest
+    command: ["redis-server", "/etc/redis/redis.conf"]
+    volumes:
+      - redis:/data
+      - ./redis/redis.conf:/etc/redis/redis.conf
+    ports:
+      - "6379:6379"

@@ -1,0 +1,8 @@
+django==5.0.8
+django-celery-beat
+
+psycopg2-binary
+django-redis
+
+python-dotenv~=1.0.1
+pydantic~=2.5.3
